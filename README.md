@@ -1,5 +1,16 @@
-# low-quality-image-detection
-Low Quality Image Detection with Machine Learningc
+# Low Quality Image Detection
+
+This repository contains some experimental Python code designed for the detection of low-quality images through a machine learning approach. 
+In particular, the algorithm will perform 
+- sharp (good quality) images detection, 
+- defocused blur detection, 
+- motion blur detection, 
+- horizontal/vertical bands detection, 
+- noise detection, 
+- excessive exposure detection, 
+- glare detection, 
+- dark photo detection, 
+- uninformative constant colour detection. 
 
 ## Environment setup
 
