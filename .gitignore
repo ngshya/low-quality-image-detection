@@ -170,7 +170,8 @@ dataset_synthetic
 # tmp files
 tmp.ipynb
 tmp.py
-99_isp.ipynb
+*_isp.ipynb
+*_isp.py
 
 # csv output files
 *.csv
