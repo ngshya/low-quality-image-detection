@@ -14,11 +14,11 @@ In particular, the algorithm will perform
 
 ## Environment setup
 
-Create a Python environment with `Python 3.10.13` and the packages listed in `requirements.txt`. Check [here](https://docs.python.org/3/library/venv.html) or, if you are using Anaconda, [here](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment) for the detailed steps. 
+Create and use a Python environment with `Python 3.10.13` and the packages listed in `requirements.txt`. Check [here](https://docs.python.org/3/library/venv.html) or, if you are using Anaconda, [here](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment) for the detailed steps. 
 
 ## Dataset
 
-The images are available [here](https://www.kaggle.com/datasets/kwentar/blur-dataset) and [here](https://drive.google.com/file/d/1RObmCDPeQ1Lg-V6u7dT02Pf0qH-QMcTp/view). Once downloaded the .zip folder, extract its contents ( defocused_blurred, motion_blurred, sharp) inside a folder called `dataset_dms` (unless you have chosen another name). 
+The images are available [here](https://www.kaggle.com/datasets/kwentar/blur-dataset) and [here](https://drive.google.com/file/d/1RObmCDPeQ1Lg-V6u7dT02Pf0qH-QMcTp/view). Once downloaded the .zip folder, extract its contents ( defocused_blurred, motion_blurred, sharp) inside a folder called `dataset_dms` (unless another location is chosen). 
 
 ## Synthetic data generation
 
@@ -26,7 +26,7 @@ The images are available [here](https://www.kaggle.com/datasets/kwentar/blur-dat
 python 01_synthetic_low_quality_images.py
 ```
 
-A folder called `dataset_synthetic` (unless you have chosen another name) will be created with generated low quality images.
+A folder called `dataset_synthetic` (unless another location is chosen) will be created with generated low quality images.
 
 ## Features generation
 
@@ -36,4 +36,6 @@ python 02_features_generation.py
 
 A CSV file called `df_public.csv` (unless another name is used) will be generated. 
 
+## Models training
 
+Look at `03_models_{name}.ipynb` notebooks as examples. 
