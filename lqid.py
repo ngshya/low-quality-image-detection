@@ -42,9 +42,9 @@ def img2matrix(path:str, l:int=400, h:int=400) -> Dict:
     img = imread(path)
     img = resize(img, dsize=(l,h))
     img_rgb =cvtColor(img, COLOR_BGR2RGB)
-    img_rgb = img_rgb[int(0.10*l):int(0.90*l), int(0.10*h):int(0.90*h), :]
+    img_rgb = img_rgb[int(0.10*h):int(0.90*h), int(0.10*l):int(0.90*l), :]
     img_gray = cvtColor(img, COLOR_BGR2GRAY)
-    img_gray = img_gray[int(0.10*l):int(0.90*l), int(0.10*h):int(0.90*h)]
+    img_gray = img_gray[int(0.10*h):int(0.90*h), int(0.10*l):int(0.90*l)]
     return {"rgb": img_rgb, "gray": img_gray}
 
 
@@ -80,9 +80,9 @@ def random_band(matrix:NDArray) -> NDArray:
         matrix = rot90(matrix, k=1, axes=(0,1))
     r = randint(low=min((int(0.2*dim_exp/6.0), 1)), high=int(dim_exp/6.0))
     v = hstack((linspace(0, 255, r), linspace(255, 0, r)))
-    m = repeat([v], l, axis=0).T
+    m = repeat([v], (1-rot)*l+rot*h, axis=0).T
     m = repeat(m[:, :, newaxis], c, axis=2)
-    i = randint(low=0, high=h-2*r)
+    i = randint(low=1, high=h-2*r)
     matrix[i:(i+2*r), :, :] = clip(
         matrix[i:(i+2*r), :, :] + choice(a=(-1,1)) * m, 
         a_min=0, a_max=255
@@ -310,13 +310,13 @@ def fftifft(img:NDArray, r:float=4.0) -> NDArray:
     """
     img_fft = fftshift(fft2(img))
     if len(img.shape) == 3:
-        l, h, _ = img.shape
+        h, l, _ = img.shape
         img_fft[
             int(l/2.0-l/r):int(l/2.0+l/r), 
             int(h/2.0-h/r):int(h/2.0+h/r), 
         :] = 0
     else:
-        l, h = img.shape
+        h, l = img.shape
         img_fft[
             int(l/2.0-l/r):int(l/2.0+l/r), 
             int(h/2.0-h/r):int(h/2.0+h/r)
@@ -346,6 +346,7 @@ def get_fft_features_per_r(matrix:NDArray, r:float=4.0) -> Dict:
         matrix = expand_dims(matrix, axis=2)
     dict_features = {}
     fft_matrix = fftifft(matrix, r=r)
+    dict_features["tot_mean"] = fft_matrix.mean()
     dict_features["tot_var"] = fft_matrix.var()
     '''
     dim_x = fft_matrix.shape[0]
