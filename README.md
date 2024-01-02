@@ -40,7 +40,7 @@ A CSV file called `df_public.csv` (unless another name is used) will be generate
 
 Look at `03_models_{name}.ipynb` notebooks as examples. 
 
-## I don't care about your experiments, just give me the script!
+## Just give me the script!
 
 ```bash
 python detect.py {image path}
