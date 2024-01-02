@@ -175,6 +175,3 @@ tmp.py
 
 # csv output files
 *.csv
-
-# models saves
-model_*.joblib
