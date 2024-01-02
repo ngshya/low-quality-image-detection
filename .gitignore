@@ -172,6 +172,4 @@ tmp.ipynb
 tmp.py
 *_isp.ipynb
 *_isp.py
-
-# csv output files
-*.csv
+*_isp.csv
