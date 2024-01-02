@@ -82,7 +82,7 @@ def random_band(matrix:NDArray) -> NDArray:
     v = hstack((linspace(0, 255, r), linspace(255, 0, r)))
     m = repeat([v], (1-rot)*l+rot*h, axis=0).T
     m = repeat(m[:, :, newaxis], c, axis=2)
-    i = randint(low=1, high=h-2*r)
+    i = randint(low=0, high=(1-rot)*h+rot*l-2*r)
     matrix[i:(i+2*r), :, :] = clip(
         matrix[i:(i+2*r), :, :] + choice(a=(-1,1)) * m, 
         a_min=0, a_max=255
