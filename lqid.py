@@ -312,14 +312,14 @@ def fftifft(img:NDArray, r:float=4.0) -> NDArray:
     if len(img.shape) == 3:
         h, l, _ = img.shape
         img_fft[
-            int(l/2.0-l/r):int(l/2.0+l/r), 
             int(h/2.0-h/r):int(h/2.0+h/r), 
+            int(l/2.0-l/r):int(l/2.0+l/r), 
         :] = 0
     else:
         h, l = img.shape
         img_fft[
-            int(l/2.0-l/r):int(l/2.0+l/r), 
-            int(h/2.0-h/r):int(h/2.0+h/r)
+            int(h/2.0-h/r):int(h/2.0+h/r), 
+            int(l/2.0-l/r):int(l/2.0+l/r)
         ] = 0
     img_ifft = ifft2(ifftshift(img_fft))
     img_ifft = 20 * log(abs(img_ifft)+1.0)
