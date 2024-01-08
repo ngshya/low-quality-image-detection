@@ -10,7 +10,9 @@ In particular, the algorithm will perform
 - excessive exposure detection, 
 - glare detection, 
 - dark photo detection, 
-- uninformative constant colour detection. 
+- uninformative constant colour detection.
+
+Check the [Medium article](https://towardsdatascience.com/low-quality-image-detection-machine-learning-fdc2c1ba86e1?source=friends_link&sk=b63d1190b3815d67668dd927f086df2a) for the technical details.
 
 ## Environment setup
 
